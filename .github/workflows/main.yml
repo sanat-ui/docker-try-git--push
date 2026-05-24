@@ -1,38 +1,30 @@
 name: CI Pipeline
 
-# When does this run?
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-# What does it do?
 jobs:
   build-and-test:
-    # Run on a fresh Ubuntu machine
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1 — Get your code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2 — Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
-      # Step 3 — Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 4 — Build Docker image
       - name: Build Docker image
         run: docker build -t my-express-app .
 
-      # Step 5 — Verify container runs
       - name: Run container
         run: |
           docker run -d -p 3000:3000 my-express-app
