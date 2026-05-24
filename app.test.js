@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => res.send('Hello Docker!'));
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 app.get('/info', (req, res) => res.json({ app: 'my app', version: '1.0.0' }));
 
