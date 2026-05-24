@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - cache
+
+  cache:
+    image: redis:7
+    ports:
+      - "6379:6379"
